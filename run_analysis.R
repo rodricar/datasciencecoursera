@@ -124,16 +124,16 @@ base_dataset_mean_std <- cbind(activity=new_dataset_all$activity,
                            subject=new_dataset_all$subject,
                            new_mean_std_dataset)
 
-#Gathering in a column "measures" and another "values_MeanStd" to facilitate 
+#Gathering in a column "measures" and another "average" to facilitate 
 #visualization and calculation of the average
 gathering_dataset_mean_std <- gather(base_dataset_mean_std, key = "measure", 
-                                value = "valuesMeanStd", 
+                                value = "average", 
                                -activity, -subject)
 
 new_dataset_average <- ddply(gathering_dataset_mean_std, 
                           .(activity,subject, measure), 
                           summarize, 
-                          average=round(mean(valuesMeanStd), 2))
+                          average=round(mean(average), 2))
 View(new_dataset_average)
 
 write.table(new_dataset_average, file="./Data/new_dataset_average.txt", row.name=FALSE) 
