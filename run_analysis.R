@@ -119,7 +119,8 @@ View(new_dataset_all)
 #STEP 5: Creates an independent tidy data set new_dataset_average with 
 #the average of each variable for each activity and each subject.
 
-#Merging the 88 columns concerning mean for base_dataset_mean
+#Merging the 88 columns concerning mean and standard deviation with activities 
+#and subjects
 base_dataset_mean_std <- cbind(activity=new_dataset_all$activity, 
                            subject=new_dataset_all$subject,
                            new_mean_std_dataset)
